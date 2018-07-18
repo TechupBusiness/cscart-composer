@@ -1,0 +1,6 @@
+.idea
+packages
+vendor
+web
+patches/cscart/cscart-ultimate/setup-config.patch
+composer.lock

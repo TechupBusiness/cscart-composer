@@ -1,0 +1,14 @@
+diff --git a/bin/cscart-sdk b/bin/cscart-sdk
+index 6342316..8661536 100755
+--- a/bin/cscart-sdk
++++ b/bin/cscart-sdk
+@@ -3,7 +3,8 @@
+ foreach (array(
+         __DIR__ . '/../../../autoload.php',
+         __DIR__ . '/../vendor/autoload.php',
+-        __DIR__ . '/vendor/autoload.php'
++        __DIR__ . '/vendor/autoload.php',
++	    __DIR__ . '/../autoload.php',
+     ) as $file) {
+     if (file_exists($file)) {
+         require_once $file;

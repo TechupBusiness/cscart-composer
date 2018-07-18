@@ -1,0 +1,66 @@
+{
+  "name": "techupbusiness/cscart-composer",
+  "homepage": "https://github.com/TechupBusiness/cscart-composer",
+  "repositories": [
+    { "type": "path", "url": "packages/*" },
+    {
+      "type": "package",
+      "package": {
+        "name": "cscart/cscart-ultimate",
+        "version": "1.0.0",
+        "dist": {
+          "url": "https://www.cs-cart.com/index.php?dispatch=pages.get_trial&page_id=297&edition=ultimate",
+          "type": "zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "cscart/cscart-mve",
+        "version": "1.0.0",
+        "dist": {
+          "url": "https://www.cs-cart.com/index.php?dispatch=pages.get_trial&page_id=297&edition=multivendor",
+          "type": "zip"
+        }
+      }
+    }
+  ],
+  "require": {
+    "cweagans/composer-patches": "~1.0",
+    "guzzlehttp/guzzle": "~6.0",
+    "cscart/sdk" : "*",
+    "cscart/cscart-ultimate" : "*",
+    "php": ">=7.0"
+  },
+  "config": {
+    "preferred-install": "source"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "patches-file": "composer.patches.json",
+    "composer-exit-on-patch-failure": true
+  },
+  "scripts": {
+    "post-install-cmd": [
+      ""
+    ],
+    "post-update-cmd": [
+      ""
+    ],
+    "setup-files": [
+      "rm -rf web",
+      "ln -s vendor/cscart/cscart-ultimate web",
+      "vendor/bin/cscart-sdk addon:symlink --templates-to-design ost_loyalty packages/ost-loyalty web",
+      "chmod 666 web/config.local.php",
+      "chmod -R 777 web/design web/images web/var",
+      "find web/design -type f -print0 | xargs -0 chmod 666",
+      "find web/images -type f -print0 | xargs -0 chmod 666",
+      "find web/var -type f -print0 | xargs -0 chmod 666"
+    ],
+    "setup-install-db": [
+      "php web/install/index.php"
+    ]
+  }
+}

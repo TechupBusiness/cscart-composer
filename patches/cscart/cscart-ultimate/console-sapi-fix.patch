@@ -1,0 +1,13 @@
+diff --git a/app/Tygh/Bootstrap.php b/app/Tygh/Bootstrap.php
+index 1c657a7..9ec52cc 100644
+--- a/app/Tygh/Bootstrap.php
++++ b/app/Tygh/Bootstrap.php
+@@ -167,7 +167,7 @@ class Bootstrap
+      */
+     public static function initConsoleMode($get, $post, $server, $dir_root)
+     {
+-        if (PHP_SAPI === 'cli') {
++        if (php_sapi_name () === 'cli') {
+             define('CONSOLE', true);
+ 
+             if (($get = self::parseCmdArgs($get, $server)) === false) {
