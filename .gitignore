@@ -4,3 +4,4 @@ vendor
 web
 patches/cscart/cscart-ultimate/setup-config.patch
 composer.lock
+shared/install/config.php

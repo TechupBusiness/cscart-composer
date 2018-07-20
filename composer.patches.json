@@ -4,7 +4,6 @@
       "Fix autoload for this project": "patches/cscart/sdk/fix-autoload.patch"
     },
     "cscart/cscart-ultimate": {
-      "Setting up install tool": "patches/cscart/cscart-ultimate/setup-config.patch",
       "Fix console identification for installation": "patches/cscart/cscart-ultimate/console-sapi-fix.patch"
     }
   }

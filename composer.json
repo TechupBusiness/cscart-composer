@@ -43,24 +43,22 @@
     "composer-exit-on-patch-failure": true
   },
   "scripts": {
-    "post-install-cmd": [
-      ""
-    ],
-    "post-update-cmd": [
-      ""
-    ],
-    "setup-files": [
+    "init-fs": [
       "rm -rf web",
       "ln -s vendor/cscart/cscart-ultimate web",
-      "vendor/bin/cscart-sdk addon:symlink --templates-to-design ost_loyalty packages/ost-loyalty web",
       "chmod 666 web/config.local.php",
       "chmod -R 777 web/design web/images web/var",
       "find web/design -type f -print0 | xargs -0 chmod 666",
       "find web/images -type f -print0 | xargs -0 chmod 666",
       "find web/var -type f -print0 | xargs -0 chmod 666"
     ],
-    "setup-install-db": [
+    "install-db": [
+      "rm -f vendor/cscart/cscart-ultimate/install/config.php",
+      "ln -s shared/install/config.php vendor/cscart/cscart-ultimate/install/config.php",
       "php web/install/index.php"
+    ],
+    "setup-addons": [
+      "vendor/bin/cscart-sdk addon:symlink --templates-to-design ost_loyalty packages/ost-loyalty web"
     ]
   }
 }
