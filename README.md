@@ -12,8 +12,7 @@ This repository allows you to install cs-cart with composer (but still not reall
    1. BROWSER: 
        1. Go to `http(s)://YOURHOST/install` and follow the wizard or
    1. COMMAND-LINE:
-       1. `config.template.php` to `config.php` in `shared/install/` and replace the credentials/hosts with yours
-       1. Run `composer install-db` and wait until installation is finished. Then you can open `http(s)://YOURHOST/admin.php` in your browser.
+       1. Does not work at the moment, check out https://docs.cs-cart.com/4.4.x/install/install_via_console.html
 
 # Installation of add-ons
 Console command example to install an add-on which is available already on the server (in folder `packages/ost-loyalty`):
@@ -31,16 +30,11 @@ You can also add the command(s) to `composer.json` and then run them via `compos
     "init-fs": [
       "rm -rf web",
       "ln -s vendor/cscart/cscart-ultimate web",
-      "rm -f vendor/cscart/cscart-ultimate/install/config.php",
-      "ln -s shared/install/config.php vendor/cscart/cscart-ultimate/install/config.php",
       "chmod 666 web/config.local.php",
       "chmod -R 777 web/design web/images web/var",
       "find web/design -type f -print0 | xargs -0 chmod 666",
       "find web/images -type f -print0 | xargs -0 chmod 666",
       "find web/var -type f -print0 | xargs -0 chmod 666"
-    ],
-    "install-db": [
-      "php web/install/index.php"
     ],
     "setup-addons": [
       "vendor/bin/cscart-sdk addon:symlink --templates-to-design ost_loyalty packages/ost-loyalty web"
